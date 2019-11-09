@@ -1,0 +1,15 @@
+<div *ngIf="peliculas.length > 0" class=" card-columns">
+  <div *ngFor="let pelicula of peliculas">
+    <div class="card">
+      <img
+        src=""
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ pelicula.title }}</h5>
+        <p class="card-text">{{ pelicula.overview.match("^[^.]+(?=[.])") }}.</p>
+      </div>
+    </div>
+  </div>
+</div>
