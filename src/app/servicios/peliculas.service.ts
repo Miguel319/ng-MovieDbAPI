@@ -81,4 +81,10 @@ export class PeliculasService {
 
     return this.http.get(url).pipe(map(this.mapearPelicula));
   }
+
+  obtenerComediasMasTaquilleras() {
+    const url = `${this.urlMovieDb}/discover/movie?with_genres=35&with_cast=23659&sort_by=revenue.desc&api_key=${this.apiKey}&language=es`;
+
+    return this.http.get(url).pipe(map(this.mapearPelicula));
+  }
 }

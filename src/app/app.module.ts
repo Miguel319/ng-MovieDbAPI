@@ -14,6 +14,7 @@ import { PopularesEntreNiniosComponent } from './componentes/peliculas/populares
 import { MejoresDelAnioComponent } from './componentes/pelicula/mejores-del-anio/mejores-del-anio.component';
 import { MejoresTomCruiseComponent } from './componentes/peliculas/mejores-tom-cruise/mejores-tom-cruise.component';
 import { MejoresDramasDelAnioComponent } from './componentes/peliculas/mejores-dramas-del-anio/mejores-dramas-del-anio.component';
+import { ComediasMasTaquillerasComponent } from './componentes/peliculas/comedias-mas-taquilleras/comedias-mas-taquilleras.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MejoresDramasDelAnioComponent } from './componentes/peliculas/mejores-d
     PopularesEntreNiniosComponent,
     MejoresDelAnioComponent,
     MejoresTomCruiseComponent,
-    MejoresDramasDelAnioComponent
+    MejoresDramasDelAnioComponent,
+    ComediasMasTaquillerasComponent
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],

@@ -6,8 +6,9 @@ import { PopularesComponent } from "./componentes/peliculas/populares/populares.
 import { EnCarteleraComponent } from "./componentes/peliculas/en-cartelera/en-cartelera.component";
 import { PopularesEntreNiniosComponent } from "./componentes/peliculas/populares-entre-ninios/populares-entre-ninios.component";
 import { MejoresDelAnioComponent } from "./componentes/pelicula/mejores-del-anio/mejores-del-anio.component";
-import { MejoresTomCruiseComponent } from './componentes/peliculas/mejores-tom-cruise/mejores-tom-cruise.component';
-import { MejoresDramasDelAnioComponent } from './componentes/peliculas/mejores-dramas-del-anio/mejores-dramas-del-anio.component';
+import { MejoresTomCruiseComponent } from "./componentes/peliculas/mejores-tom-cruise/mejores-tom-cruise.component";
+import { MejoresDramasDelAnioComponent } from "./componentes/peliculas/mejores-dramas-del-anio/mejores-dramas-del-anio.component";
+import { ComediasMasTaquillerasComponent } from "./componentes/peliculas/comedias-mas-taquilleras/comedias-mas-taquilleras.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -24,10 +25,13 @@ const routes: Routes = [
     path: "peliculas/mejores-de-tom-cruise",
     component: MejoresTomCruiseComponent
   },
-
   {
     path: "peliculas/populares-entre-ninios",
     component: PopularesEntreNiniosComponent
+  },
+  {
+    path: "peliculas/comedias-mas-taquilleras",
+    component: ComediasMasTaquillerasComponent
   },
   { path: "**", pathMatch: "full", redirectTo: "" }
 ];
