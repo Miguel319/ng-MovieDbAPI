@@ -10,6 +10,7 @@ import { PopularesComponent } from "./componentes/peliculas/populares/populares.
 import { AppRoutingModule } from "./routes";
 import { ListaComponent } from "./componentes/peliculas/lista/lista.component";
 import { EnCarteleraComponent } from './componentes/peliculas/en-cartelera/en-cartelera.component';
+import { PopularesEntreNiniosComponent } from './componentes/peliculas/populares-entre-ninios/populares-entre-ninios.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { EnCarteleraComponent } from './componentes/peliculas/en-cartelera/en-ca
     HomeComponent,
     PopularesComponent,
     ListaComponent,
-    EnCarteleraComponent
+    EnCarteleraComponent,
+    PopularesEntreNiniosComponent
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],

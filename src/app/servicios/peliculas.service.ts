@@ -15,7 +15,7 @@ export class PeliculasService {
 
   constructor(private http: HttpClient) {}
 
-  crearPelicula(objPelicula: Object): Pelicula[] {
+  private mapearPelicula(objPelicula: Object): Pelicula[] {
     const peliculas: Pelicula[] = [];
 
     for (let obj of objPelicula["results"]) {
@@ -42,24 +42,22 @@ export class PeliculasService {
       Number(mesActual) - 1
     ).toString()}-${fechaActual.getDate()}`;
 
-
     const hoy = `${fechaActual.getFullYear()}-${mesActual}-${fechaActual.getDate()}`;
-    //const url = `${this.urlMovieDb}/discover/movie?primary_release_date.gte=${haceUnMes}&api_key=${this.apiKey}&primary_release_date.lte=${hoy}&language=es`;
-    const url = `${this.urlMovieDb}/discover/movie?primary_release_date.gte=${haceUnMes}&primary_release_date.lte=${hoy}&api_key=${this.apiKey}&language=es`;
-    console.log(haceUnMes, hoy);
 
-    return this.http.get(url).pipe(map(this.crearPelicula));
+    const url = `${this.urlMovieDb}/discover/movie?primary_release_date.gte=${haceUnMes}&primary_release_date.lte=${hoy}&api_key=${this.apiKey}&language=es`;
+
+    return this.http.get(url).pipe(map(this.mapearPelicula));
   }
 
   //Populares
   obtenerPeliculasPopulares() {
     const url = `${this.urlMovieDb}/discover/movie?sort_by=popularity.desc&api_key=${this.apiKey}&language=es`;
-    return this.http.get(url).pipe(map(this.crearPelicula));
+    return this.http.get(url).pipe(map(this.mapearPelicula));
   }
 
   //Populares más para niños
   obtenerPopularesEntreNinios() {
-    const url = `${this.urlMovieDb}/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc&api_key=${this.urlMovieDb}&language=es`;
-    return this.http.get(url);
+    const url = `${this.urlMovieDb}/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc&api_key=${this.apiKey}&language=es`;
+    return this.http.get(url).pipe(map(this.mapearPelicula));
   }
 }
