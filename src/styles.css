@@ -4,3 +4,10 @@ body {
   font-family: 'Saira Semi Condensed',
     sans-serif;
 }
+
+
+.titulo {
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 28px;
+}

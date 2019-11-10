@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PeliculasService } from "../../../servicios/peliculas.service";
+import { Pelicula } from "src/app/modelos/pelicula.model";
 
 @Component({
   selector: "app-populares",
@@ -7,7 +8,7 @@ import { PeliculasService } from "../../../servicios/peliculas.service";
   styleUrls: ["./populares.component.css"]
 })
 export class PopularesComponent implements OnInit {
-  peliculas: any[] = [];
+  peliculas: Pelicula[] = [];
   imgPath = "image.tmdb.org/t/p/w300";
 
   constructor(private peliculaServicio: PeliculasService) {
@@ -18,8 +19,8 @@ export class PopularesComponent implements OnInit {
 
   obtenerPopulares() {
     this.peliculaServicio.obtenerPeliculasPopulares().subscribe(
-      (res: any) => {
-        this.peliculas = res.results;
+      res => {
+        this.peliculas = res;
         console.log(res);
       },
       err => console.log(err)
