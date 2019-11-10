@@ -87,4 +87,10 @@ export class PeliculasService {
 
     return this.http.get(url).pipe(map(this.mapearPelicula));
   }
+
+  obtenerMejoresConRatingR() {
+    const url = `${this.urlMovieDb}/discover/movie/?certification_country=US&certification=R&sort_by=vote_average.desc&api_key=${this.apiKey}&language=es`;
+    
+    return this.http.get(url).pipe(map(this.mapearPelicula));
+  }
 }
