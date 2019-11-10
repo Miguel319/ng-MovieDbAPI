@@ -9,10 +9,12 @@ import { Pelicula } from "src/app/modelos/pelicula.model";
 })
 export class MejoresDelAnioComponent implements OnInit {
   peliculas: Pelicula[] = [];
+  anioActual: number;
 
   constructor(private peliculasServicio: PeliculasService) {}
 
   ngOnInit() {
+    this.anioActual = new Date().getFullYear();
     this.obtenerMejoresDelAnio();
   }
 
@@ -24,4 +26,5 @@ export class MejoresDelAnioComponent implements OnInit {
         err => console.log(err)
       );
   }
+
 }

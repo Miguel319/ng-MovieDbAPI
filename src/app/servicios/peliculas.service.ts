@@ -75,4 +75,10 @@ export class PeliculasService {
 
     return this.http.get(url).pipe(map(this.mapearPelicula));
   }
+
+  obtenerMejoresDramasDelAnio() {
+    const url = `${this.urlMovieDb}/discover/movie?with_genres=18&primary_release_year=${this.fechaActual.getFullYear()}$&api_key=${this.apiKey}&language=es`;
+
+    return this.http.get(url).pipe(map(this.mapearPelicula));
+  }
 }
