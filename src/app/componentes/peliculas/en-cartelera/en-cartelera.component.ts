@@ -17,7 +17,7 @@ export class EnCarteleraComponent implements OnInit {
   }
 
   obtenerPeliculasEnCartelera() {
-    this.peliculasService.obtenerPeliculasEnCartelera().subscribe(
+    this.peliculasService.obtenerEnCartelera().subscribe(
       (res: Pelicula[]) => {
         this.peliculas = res;
         console.log(res);

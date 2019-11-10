@@ -31,7 +31,7 @@ export class PeliculasService {
   }
 
   //En cartelera
-  obtenerPeliculasEnCartelera() {
+  obtenerEnCartelera() {
     const fechaActual = new Date();
     const mesActual =
       fechaActual.getMonth().toString().length === 1
@@ -50,7 +50,7 @@ export class PeliculasService {
   }
 
   //Populares
-  obtenerPeliculasPopulares() {
+  obtenerPopulares() {
     const url = `${this.urlMovieDb}/discover/movie?sort_by=popularity.desc&api_key=${this.apiKey}&language=es`;
     return this.http.get(url).pipe(map(this.mapearPelicula));
   }
@@ -58,6 +58,14 @@ export class PeliculasService {
   //Populares más para niños
   obtenerPopularesEntreNinios() {
     const url = `${this.urlMovieDb}/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc&api_key=${this.apiKey}&language=es`;
+    return this.http.get(url).pipe(map(this.mapearPelicula));
+  }
+
+  //Mejores del año actual
+  obtenerMejoresDelAnio() {
+    const anioActual = new Date().getFullYear();
+    const url = `${this.urlMovieDb}/discover/movie?primary_release_year=${anioActual}&sort_by=vote_average.desc&api_key=${this.apiKey}&language=es`;
+
     return this.http.get(url).pipe(map(this.mapearPelicula));
   }
 }

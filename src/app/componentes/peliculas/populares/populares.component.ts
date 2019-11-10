@@ -18,7 +18,7 @@ export class PopularesComponent implements OnInit {
   ngOnInit() {}
 
   obtenerPopulares() {
-    this.peliculaServicio.obtenerPeliculasPopulares().subscribe(
+    this.peliculaServicio.obtenerPopulares().subscribe(
       res => {
         this.peliculas = res;
         console.log(res);
