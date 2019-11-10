@@ -6,6 +6,7 @@ import { PopularesComponent } from "./componentes/peliculas/populares/populares.
 import { EnCarteleraComponent } from "./componentes/peliculas/en-cartelera/en-cartelera.component";
 import { PopularesEntreNiniosComponent } from "./componentes/peliculas/populares-entre-ninios/populares-entre-ninios.component";
 import { MejoresDelAnioComponent } from "./componentes/pelicula/mejores-del-anio/mejores-del-anio.component";
+import { MejoresTomCruiseComponent } from './componentes/peliculas/mejores-tom-cruise/mejores-tom-cruise.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: "busqueda/:texto", component: BusquedaComponent },
   { path: "peliculas/populares", component: PopularesComponent },
   { path: "peliculas/en-cartelera", component: EnCarteleraComponent },
-  { path: "peliculas/mejoresDelAnio", component: MejoresDelAnioComponent },
+  { path: "peliculas/mejores-del-anio", component: MejoresDelAnioComponent },
+  { path: 'peliculas/mejores-de-tom-cruise', component: MejoresTomCruiseComponent},
   {
     path: "peliculas/populares-entre-ninios",
     component: PopularesEntreNiniosComponent

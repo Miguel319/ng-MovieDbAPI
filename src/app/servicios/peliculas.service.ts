@@ -7,6 +7,8 @@ import { Pelicula } from "../modelos/pelicula.model";
   providedIn: "root"
 })
 export class PeliculasService {
+  private fechaActual = new Date();
+
   private apiKey: string = "054cbf2e2a38d79537414261f30140f8";
   private urlMovieDb: string = "https://api.themoviedb.org/3";
 
@@ -32,17 +34,16 @@ export class PeliculasService {
 
   //En cartelera
   obtenerEnCartelera() {
-    const fechaActual = new Date();
     const mesActual =
-      fechaActual.getMonth().toString().length === 1
-        ? `0${fechaActual.getMonth() + 1}`
-        : fechaActual.getMonth() + 1;
+      this.fechaActual.getMonth().toString().length === 1
+        ? `0${this.fechaActual.getMonth() + 1}`
+        : this.fechaActual.getMonth() + 1;
 
-    const haceUnMes = `${fechaActual.getFullYear()}-${(
+    const haceUnMes = `${this.fechaActual.getFullYear()}-${(
       Number(mesActual) - 1
-    ).toString()}-${fechaActual.getDate()}`;
+    ).toString()}-${this.fechaActual.getDate()}`;
 
-    const hoy = `${fechaActual.getFullYear()}-${mesActual}-${fechaActual.getDate()}`;
+    const hoy = `${this.fechaActual.getFullYear()}-${mesActual}-${this.fechaActual.getDate()}`;
 
     const url = `${this.urlMovieDb}/discover/movie?primary_release_date.gte=${haceUnMes}&primary_release_date.lte=${hoy}&api_key=${this.apiKey}&language=es`;
 
@@ -63,8 +64,14 @@ export class PeliculasService {
 
   //Mejores del año actual
   obtenerMejoresDelAnio() {
-    const anioActual = new Date().getFullYear();
-    const url = `${this.urlMovieDb}/discover/movie?primary_release_year=${anioActual}&sort_by=vote_average.desc&api_key=${this.apiKey}&language=es`;
+    const url = `${this.urlMovieDb}/discover/movie?primary_release_year=${this.fechaActual.getFullYear()}&sort_by=vote_average.desc&api_key=${this.apiKey}&language=es`;
+
+    return this.http.get(url).pipe(map(this.mapearPelicula));
+  }
+
+  //Mejores películas de ciencia ficción en las que ha estado Tom Cruise
+  obtenerMejoresTomCruise() {
+    const url = `${this.urlMovieDb}/discover/movie?with_genres=878&with_cast=500&sort_by=vote_average.desc&api_key=${this.apiKey}&language=es`;
 
     return this.http.get(url).pipe(map(this.mapearPelicula));
   }
