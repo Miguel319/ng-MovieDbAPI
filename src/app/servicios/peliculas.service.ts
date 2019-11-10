@@ -33,9 +33,20 @@ export class PeliculasService {
   //En cartelera
   obtenerPeliculasEnCartelera() {
     const fechaActual = new Date();
-    const haceUnMes = `${fechaActual.getFullYear()}-${fechaActual.getMonth() -
-      1}-${fechaActual.getDay()}`.toString();
-    const url = `${this.urlMovieDb}/discover/movie?primary_release_date.gte=${haceUnMes}&api_key=${this.apiKey}&primary_release_date.lte=${fechaActual}&language=es`;
+    const mesActual =
+      fechaActual.getMonth().toString().length === 1
+        ? `0${fechaActual.getMonth() + 1}`
+        : fechaActual.getMonth() + 1;
+
+    const haceUnMes = `${fechaActual.getFullYear()}-${(
+      Number(mesActual) - 1
+    ).toString()}-${fechaActual.getDate()}`;
+
+
+    const hoy = `${fechaActual.getFullYear()}-${mesActual}-${fechaActual.getDate()}`;
+    //const url = `${this.urlMovieDb}/discover/movie?primary_release_date.gte=${haceUnMes}&api_key=${this.apiKey}&primary_release_date.lte=${hoy}&language=es`;
+    const url = `${this.urlMovieDb}/discover/movie?primary_release_date.gte=${haceUnMes}&primary_release_date.lte=${hoy}&api_key=${this.apiKey}&language=es`;
+    console.log(haceUnMes, hoy);
 
     return this.http.get(url).pipe(map(this.crearPelicula));
   }

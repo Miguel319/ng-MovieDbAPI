@@ -9,6 +9,7 @@ import { HomeComponent } from "./componentes/home/home.component";
 import { PopularesComponent } from "./componentes/peliculas/populares/populares.component";
 import { AppRoutingModule } from "./routes";
 import { ListaComponent } from "./componentes/peliculas/lista/lista.component";
+import { EnCarteleraComponent } from './componentes/peliculas/en-cartelera/en-cartelera.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ListaComponent } from "./componentes/peliculas/lista/lista.component";
     BusquedaComponent,
     HomeComponent,
     PopularesComponent,
-    ListaComponent
+    ListaComponent,
+    EnCarteleraComponent
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],
