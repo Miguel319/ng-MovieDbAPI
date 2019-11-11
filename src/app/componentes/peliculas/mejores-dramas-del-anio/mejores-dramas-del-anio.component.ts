@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pelicula } from 'src/app/modelos/pelicula.model';
 import { PeliculasService } from '../../../servicios/peliculas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mejores-dramas-del-anio',
@@ -11,7 +12,10 @@ export class MejoresDramasDelAnioComponent implements OnInit {
   peliculas: Pelicula[] = [];
   anioActual: number;
 
-  constructor(private peliculasServicio: PeliculasService) { }
+  constructor(
+    private peliculasServicio: PeliculasService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.anioActual = new Date().getFullYear();
@@ -24,5 +28,9 @@ export class MejoresDramasDelAnioComponent implements OnInit {
         res => this.peliculas = res,
         err => console.log(err)
       );
+  }
+
+  verDetalle(evento: any) {
+    this.router.navigateByUrl(`peliculas/mejores-dramas-del-anio/${evento}`);
   }
 }

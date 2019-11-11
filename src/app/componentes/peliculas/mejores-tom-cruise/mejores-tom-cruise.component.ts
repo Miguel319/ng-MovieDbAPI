@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Pelicula } from "../../../modelos/pelicula.model";
 import { PeliculasService } from "../../../servicios/peliculas.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-mejores-tom-cruise",
@@ -10,7 +11,10 @@ import { PeliculasService } from "../../../servicios/peliculas.service";
 export class MejoresTomCruiseComponent implements OnInit {
   peliculas: Pelicula[] = [];
 
-  constructor(private peliculaServicio: PeliculasService) {}
+  constructor(
+    private peliculaServicio: PeliculasService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.obtenerMejoresTomCruise();
@@ -24,5 +28,9 @@ export class MejoresTomCruiseComponent implements OnInit {
         (res: Pelicula[]) => (this.peliculas = res),
         err => console.log(err)
       );
+  }
+
+  verDetalle(evento: any) {
+    this.router.navigateByUrl(`peliculas/mejores-de-tom-cruise/${evento}`);
   }
 }

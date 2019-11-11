@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { Pelicula } from "../modelos/pelicula.model";
+import { PeliculaDetalle } from "../modelos/pelicula-detalle.model";
 
 @Injectable({
   providedIn: "root"
@@ -17,7 +18,7 @@ export class PeliculasService {
 
   constructor(private http: HttpClient) {}
 
-  private mapearPelicula(objPelicula: Object): Pelicula[] {
+  private mapearPeliculas(objPelicula: Object): Pelicula[] {
     const peliculas: Pelicula[] = [];
 
     for (let obj of objPelicula["results"]) {
@@ -30,6 +31,19 @@ export class PeliculasService {
       peliculas.push(obj);
     }
     return peliculas;
+  }
+
+  private mapearPelicula(objPelicula: PeliculaDetalle) {
+    let peliculaDetalles: PeliculaDetalle = { ...objPelicula };
+
+    if (!objPelicula.backdrop_path.startsWith("h")) {
+      peliculaDetalles.backdrop_path = `http://image.tmdb.org/t/p/w300/${objPelicula.backdrop_path}`;
+      peliculaDetalles.poster_path = `http://image.tmdb.org/t/p/w300/${objPelicula.poster_path}`;
+    }
+
+    return objPelicula === null || objPelicula === undefined
+      ? {}
+      : peliculaDetalles;
   }
 
   //En cartelera
@@ -47,50 +61,64 @@ export class PeliculasService {
 
     const url = `${this.urlMovieDb}/discover/movie?primary_release_date.gte=${haceUnMes}&primary_release_date.lte=${hoy}&api_key=${this.apiKey}&language=es`;
 
-    return this.http.get(url).pipe(map(this.mapearPelicula));
+    return this.http.get(url).pipe(map(this.mapearPeliculas));
   }
 
   //Populares
   obtenerPopulares() {
     const url = `${this.urlMovieDb}/discover/movie?sort_by=popularity.desc&api_key=${this.apiKey}&language=es`;
-    return this.http.get(url).pipe(map(this.mapearPelicula));
+    return this.http.get(url).pipe(map(this.mapearPeliculas));
   }
 
   //Populares más para niños
   obtenerPopularesEntreNinios() {
     const url = `${this.urlMovieDb}/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc&api_key=${this.apiKey}&language=es`;
-    return this.http.get(url).pipe(map(this.mapearPelicula));
+    return this.http.get(url).pipe(map(this.mapearPeliculas));
   }
 
   //Mejores del año actual
   obtenerMejoresDelAnio() {
-    const url = `${this.urlMovieDb}/discover/movie?primary_release_year=${this.fechaActual.getFullYear()}&sort_by=vote_average.desc&api_key=${this.apiKey}&language=es`;
+    const url = `${
+      this.urlMovieDb
+    }/discover/movie?primary_release_year=${this.fechaActual.getFullYear()}&sort_by=vote_average.desc&api_key=${
+      this.apiKey
+    }&language=es`;
 
-    return this.http.get(url).pipe(map(this.mapearPelicula));
+    return this.http.get(url).pipe(map(this.mapearPeliculas));
   }
 
   //Mejores películas de ciencia ficción en las que ha estado Tom Cruise
   obtenerMejoresTomCruise() {
     const url = `${this.urlMovieDb}/discover/movie?with_genres=878&with_cast=500&sort_by=vote_average.desc&api_key=${this.apiKey}&language=es`;
 
-    return this.http.get(url).pipe(map(this.mapearPelicula));
+    return this.http.get(url).pipe(map(this.mapearPeliculas));
   }
 
   obtenerMejoresDramasDelAnio() {
-    const url = `${this.urlMovieDb}/discover/movie?with_genres=18&primary_release_year=${this.fechaActual.getFullYear()}$&api_key=${this.apiKey}&language=es`;
+    const url = `${
+      this.urlMovieDb
+    }/discover/movie?with_genres=18&primary_release_year=${this.fechaActual.getFullYear()}$&api_key=${
+      this.apiKey
+    }&language=es`;
 
-    return this.http.get(url).pipe(map(this.mapearPelicula));
+    return this.http.get(url).pipe(map(this.mapearPeliculas));
   }
 
   obtenerComediasMasTaquilleras() {
     const url = `${this.urlMovieDb}/discover/movie?with_genres=35&with_cast=23659&sort_by=revenue.desc&api_key=${this.apiKey}&language=es`;
 
-    return this.http.get(url).pipe(map(this.mapearPelicula));
+    return this.http.get(url).pipe(map(this.mapearPeliculas));
   }
 
   obtenerMejoresConRatingR() {
     const url = `${this.urlMovieDb}/discover/movie/?certification_country=US&certification=R&sort_by=vote_average.desc&api_key=${this.apiKey}&language=es`;
-    
+
+    return this.http.get(url).pipe(map(this.mapearPeliculas));
+  }
+
+  obtenerDetalles(id: number | string) {
+    const url = `${this.urlMovieDb}/movie/${id}?api_key=${this.apiKey}&language=es`;
+
     return this.http.get(url).pipe(map(this.mapearPelicula));
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { PeliculasService } from "../../../servicios/peliculas.service";
 import { Pelicula } from "src/app/modelos/pelicula.model";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-en-cartelera",
@@ -10,7 +11,10 @@ import { Pelicula } from "src/app/modelos/pelicula.model";
 export class EnCarteleraComponent implements OnInit {
   peliculas: Pelicula[] = [];
 
-  constructor(private peliculasService: PeliculasService) {}
+  constructor(
+    private peliculasService: PeliculasService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.obtenerPeliculasEnCartelera();
@@ -24,5 +28,9 @@ export class EnCarteleraComponent implements OnInit {
       },
       err => console.log(err)
     );
+  }
+
+  verDetalles(evento: any) {
+    this.router.navigateByUrl(`peliculas/en-cartelera/${evento}`);
   }
 }

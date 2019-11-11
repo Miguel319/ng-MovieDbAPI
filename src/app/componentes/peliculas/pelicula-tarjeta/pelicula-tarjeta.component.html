@@ -1,0 +1,14 @@
+<div class="card">
+  <img
+    [src]="pelicula.poster_path"
+    (click)="verDetalles()"
+    class="card-img-top"
+    alt="{{ pelicula.title }}"
+  />
+  <div class="card-body">
+    <h5 class="card-title">
+      <b>{{ pelicula.title }}</b>
+    </h5>
+    <p class="card-text">{{ pelicula.overview.match("^[^.]+(?=[.])") }}.</p>
+  </div>
+</div>

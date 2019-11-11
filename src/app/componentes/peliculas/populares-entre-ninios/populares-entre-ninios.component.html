@@ -1,3 +1,11 @@
 <h3 class="titulo">Películas populares entre niños</h3>
 
-<app-lista [peliculas]="peliculas"></app-lista>
+<div class="card-columns">
+  <app-pelicula-tarjeta
+    (cambioPelicula)="verDetalles($event)"
+    [id]="pelicula.id"
+    *ngFor="let pelicula of peliculas"
+    [pelicula]="pelicula"
+  >
+  </app-pelicula-tarjeta>
+</div>

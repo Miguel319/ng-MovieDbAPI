@@ -1,3 +1,11 @@
 <h3 class="titulo">Comedias más taquilleras</h3>
 
-<app-lista [peliculas]="peliculas"></app-lista>
+<div class="card-columns">
+  <app-pelicula-tarjeta
+    (cambioPelicula)="verDetalle($event)"
+    *ngFor="let pelicula of peliculas"
+    [id]="pelicula.id"
+    [pelicula]="pelicula"
+  >
+  </app-pelicula-tarjeta>
+</div>

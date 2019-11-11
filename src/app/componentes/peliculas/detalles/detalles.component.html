@@ -1,0 +1,57 @@
+<h3 *ngIf="pelicula" class="titulo">{{ pelicula.title }}</h3>
+<div *ngIf="pelicula" class="row">
+  <div class="col-md-5">
+    <img [src]="pelicula.poster_path" alt="{{ pelicula.title }}" />
+    <h5 class="mb-3 mt-3"><b>Rating: </b>{{ pelicula?.vote_average }}</h5>
+    <h5 class="mb-3"><b>Lanzamiento: </b> {{ pelicula?.release_date }}</h5>
+    <h5><b>Votaciones: </b>{{ pelicula?.vote_count }}</h5>
+  </div>
+
+  <div class="col-md-7">
+    <h3 class="titulo">Sinopsis</h3>
+    <p>{{ pelicula.overview }}</p>
+
+    <h5 class="mb-3" *ngIf="estaVacio(pelicula, 'revenue')">
+      <b>Ganancias: </b> No establecidas
+    </h5>
+    <h5 class="mb-3" *ngIf="!estaVacio(pelicula, 'revenue')">
+      <b>Ganancias: </b> {{ pelicula.revenue | currency }}
+    </h5>
+    <h5 class="mb-3"><b>Duración:</b> {{ pelicula.runtime | duracion }}</h5>
+    <div *ngIf="pelicula.genres.length > 1; else genero">
+      <h5 class="titulo">Géneros:</h5>
+      <ul *ngFor="let genero of pelicula.genres">
+        <li>{{ genero["name"] }}</li>
+      </ul>
+    </div>
+
+    <ng-template #genero>
+      <ng-container>
+        <h5><b>Género: </b> {{ pelicula.genres[0]["name"] }}</h5>
+      </ng-container>
+    </ng-template>
+
+    <div *ngIf="pelicula.production_companies.length > 1; else productora">
+      <h5 class="titulo">Productoras</h5>
+      <ul *ngFor="let productora of pelicula.production_companies">
+        <li>{{ productora["name"] }}</li>
+      </ul>
+    </div>
+
+    <ng-template #productora>
+      <ng-container
+        *ngIf="pelicula.production_companies.length === 1; else ninguna"
+      >
+        <h5>
+          <b>Productora: </b> {{ pelicula.production_companies[0]["name"] }}
+        </h5>
+      </ng-container>
+    </ng-template>
+
+    <ng-template #ninguna>
+      <ng-container>
+        <h5><b>Productora: </b> No establecida</h5>
+      </ng-container>
+    </ng-template>
+  </div>
+</div>

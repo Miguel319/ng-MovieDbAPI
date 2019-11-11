@@ -1,4 +1,4 @@
-export class Pelicula {
+export interface Pelicula {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];

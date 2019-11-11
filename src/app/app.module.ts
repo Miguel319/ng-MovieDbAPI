@@ -8,14 +8,16 @@ import { BusquedaComponent } from "./componentes/busqueda/busqueda.component";
 import { HomeComponent } from "./componentes/home/home.component";
 import { PopularesComponent } from "./componentes/peliculas/populares/populares.component";
 import { AppRoutingModule } from "./routes";
-import { ListaComponent } from "./componentes/peliculas/lista/lista.component";
-import { EnCarteleraComponent } from './componentes/peliculas/en-cartelera/en-cartelera.component';
-import { PopularesEntreNiniosComponent } from './componentes/peliculas/populares-entre-ninios/populares-entre-ninios.component';
-import { MejoresDelAnioComponent } from './componentes/pelicula/mejores-del-anio/mejores-del-anio.component';
-import { MejoresTomCruiseComponent } from './componentes/peliculas/mejores-tom-cruise/mejores-tom-cruise.component';
-import { MejoresDramasDelAnioComponent } from './componentes/peliculas/mejores-dramas-del-anio/mejores-dramas-del-anio.component';
-import { ComediasMasTaquillerasComponent } from './componentes/peliculas/comedias-mas-taquilleras/comedias-mas-taquilleras.component';
-import { MejoresConRatingRComponent } from './componentes/peliculas/mejores-con-rating-r/mejores-con-rating-r.component';
+import { EnCarteleraComponent } from "./componentes/peliculas/en-cartelera/en-cartelera.component";
+import { PopularesEntreNiniosComponent } from "./componentes/peliculas/populares-entre-ninios/populares-entre-ninios.component";
+import { MejoresDelAnioComponent } from "./componentes/peliculas/mejores-del-anio/mejores-del-anio.component";
+import { MejoresTomCruiseComponent } from "./componentes/peliculas/mejores-tom-cruise/mejores-tom-cruise.component";
+import { MejoresDramasDelAnioComponent } from "./componentes/peliculas/mejores-dramas-del-anio/mejores-dramas-del-anio.component";
+import { ComediasMasTaquillerasComponent } from "./componentes/peliculas/comedias-mas-taquilleras/comedias-mas-taquilleras.component";
+import { MejoresConRatingRComponent } from "./componentes/peliculas/mejores-con-rating-r/mejores-con-rating-r.component";
+import { DetallesComponent } from "./componentes/peliculas/detalles/detalles.component";
+import { PeliculaTarjetaComponent } from "./componentes/peliculas/pelicula-tarjeta/pelicula-tarjeta.component";
+import { DuracionPipe } from './pipes/duracion.pipe';
 
 @NgModule({
   declarations: [
@@ -24,14 +26,16 @@ import { MejoresConRatingRComponent } from './componentes/peliculas/mejores-con-
     BusquedaComponent,
     HomeComponent,
     PopularesComponent,
-    ListaComponent,
     EnCarteleraComponent,
     PopularesEntreNiniosComponent,
     MejoresDelAnioComponent,
     MejoresTomCruiseComponent,
     MejoresDramasDelAnioComponent,
     ComediasMasTaquillerasComponent,
-    MejoresConRatingRComponent
+    MejoresConRatingRComponent,
+    DetallesComponent,
+    PeliculaTarjetaComponent,
+    DuracionPipe
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],

@@ -1,5 +1,13 @@
-<h3 class="titulo">Mejores dramas del año <i>{{anioActual}}</i></h3>
+<h3 class="titulo">
+  Mejores dramas del año <i>{{ anioActual }}</i>
+</h3>
 
-<app-lista [peliculas]="peliculas">
-
-</app-lista>
+<div class="card-columns">
+  <app-pelicula-tarjeta
+    *ngFor="let pelicula of peliculas"
+    [id]="pelicula.id"
+    (cambioPelicula)="verDetalle($event)"
+    [pelicula]="pelicula"
+  >
+  </app-pelicula-tarjeta>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Pelicula } from "src/app/modelos/pelicula.model";
 import { PeliculasService } from "../../../servicios/peliculas.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-comedias-mas-taquilleras",
@@ -10,7 +11,10 @@ import { PeliculasService } from "../../../servicios/peliculas.service";
 export class ComediasMasTaquillerasComponent implements OnInit {
   peliculas: Pelicula[] = [];
 
-  constructor(private peliculasServicio: PeliculasService) {}
+  constructor(
+    private peliculasServicio: PeliculasService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.obtenerComediasMasTaquilleras();
@@ -20,5 +24,9 @@ export class ComediasMasTaquillerasComponent implements OnInit {
     this.peliculasServicio
       .obtenerMejoresDramasDelAnio()
       .subscribe(res => (this.peliculas = res), err => console.log(err));
+  }
+
+  verDetalle(evento: any) {
+    this.router.navigateByUrl(`peliculas/comedias-mas-taquilleras/${evento}`);
   }
 }
