@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { HomeComponent } from "./componentes/home/home.component";
-import { BusquedaComponent } from "./componentes/busqueda/busqueda.component";
+import { BusquedaComponent } from "./componentes/peliculas/busqueda/busqueda.component";
 import { PopularesComponent } from "./componentes/peliculas/populares/populares.component";
 import { EnCarteleraComponent } from "./componentes/peliculas/en-cartelera/en-cartelera.component";
 import { PopularesEntreNiniosComponent } from "./componentes/peliculas/populares-entre-ninios/populares-entre-ninios.component";
@@ -10,24 +10,25 @@ import { MejoresTomCruiseComponent } from "./componentes/peliculas/mejores-tom-c
 import { MejoresDramasDelAnioComponent } from "./componentes/peliculas/mejores-dramas-del-anio/mejores-dramas-del-anio.component";
 import { ComediasMasTaquillerasComponent } from "./componentes/peliculas/comedias-mas-taquilleras/comedias-mas-taquilleras.component";
 import { MejoresConRatingRComponent } from "./componentes/peliculas/mejores-con-rating-r/mejores-con-rating-r.component";
-import { DetallesComponent } from "./componentes/peliculas/detalles/detalles.component";
+import { DetallesComponent } from './componentes/peliculas/detalles/detalles.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "peliculas/busqueda", component: BusquedaComponent },
   { path: "peliculas/busqueda/:peliculaNombre", component: BusquedaComponent },
+  { path: 'peliculas/busqueda/detalles/:id', component: DetallesComponent },
   { path: "peliculas/populares", component: PopularesComponent },
-  { path: "peliculas/populares/:id", component: DetallesComponent },
+  { path: "peliculas/populares/detalles/:id", component: DetallesComponent },
   { path: "peliculas/en-cartelera", component: EnCarteleraComponent },
-  { path: "peliculas/en-cartelera/:id", component: DetallesComponent },
+  { path: "peliculas/en-cartelera/detalles/:id", component: DetallesComponent },
   { path: "peliculas/mejores-del-anio", component: MejoresDelAnioComponent },
-  { path: "peliculas/mejores-del-anio/:id", component: DetallesComponent },
+  { path: "peliculas/mejores-del-anio/detalles/:id", component: DetallesComponent },
   {
     path: "peliculas/mejores-dramas-del-anio",
     component: MejoresDramasDelAnioComponent
   },
   {
-    path: "peliculas/mejores-dramas-del-anio/:id",
+    path: "peliculas/mejores-dramas-del-anio/detalles/:id",
     component: DetallesComponent
   },
   {
@@ -35,7 +36,7 @@ const routes: Routes = [
     component: MejoresTomCruiseComponent
   },
   {
-    path: "peliculas/mejores-de-tom-cruise/:id",
+    path: "peliculas/mejores-de-tom-cruise/detalles/:id",
     component: DetallesComponent
   },
   {
@@ -43,7 +44,7 @@ const routes: Routes = [
     component: PopularesEntreNiniosComponent
   },
   {
-    path: "peliculas/populares-entre-ninios/:id",
+    path: "peliculas/populares-entre-ninios/detalles/:id",
     component: DetallesComponent
   },
   {
@@ -51,7 +52,7 @@ const routes: Routes = [
     component: ComediasMasTaquillerasComponent
   },
   {
-    path: "peliculas/comedias-mas-taquilleras/:id",
+    path: "peliculas/comedias-mas-taquilleras/detalles/:id",
     component: DetallesComponent
   },
   {
@@ -59,7 +60,7 @@ const routes: Routes = [
     component: MejoresConRatingRComponent
   },
   {
-    path: "peliculas/mejores-con-rating-r/:id",
+    path: "peliculas/mejores-con-rating-r/detalles/:id",
     component: DetallesComponent
   },
   { path: "**", pathMatch: "full", redirectTo: "" }

@@ -30,7 +30,7 @@ export class MejoresDramasDelAnioComponent implements OnInit {
       );
   }
 
-  verDetalle(evento: any) {
-    this.router.navigateByUrl(`peliculas/mejores-dramas-del-anio/${evento}`);
+  verDetalles(evento: any) {
+    this.router.navigateByUrl(`peliculas/mejores-dramas-del-anio/detalles/${evento}`);
   }
 }

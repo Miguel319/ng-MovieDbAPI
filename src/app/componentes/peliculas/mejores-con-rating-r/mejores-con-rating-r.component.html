@@ -4,6 +4,7 @@
   <app-pelicula-tarjeta
     *ngFor="let pelicula of peliculas"
     [pelicula]="pelicula"
+    (cambioPelicula)="verDetalles($event)"
     [id]="pelicula.id"
   >
   </app-pelicula-tarjeta>

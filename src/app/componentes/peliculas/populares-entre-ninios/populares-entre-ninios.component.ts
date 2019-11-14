@@ -30,6 +30,6 @@ export class PopularesEntreNiniosComponent implements OnInit {
   }
 
   verDetalles(evento: any) {
-    this.router.navigateByUrl(`peliculas/populares-entre-ninios/${evento}`);
+    this.router.navigateByUrl(`peliculas/populares-entre-ninios/detalles/${evento}`);
   }
 }

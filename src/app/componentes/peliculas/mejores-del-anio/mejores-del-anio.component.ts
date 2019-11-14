@@ -31,8 +31,8 @@ export class MejoresDelAnioComponent implements OnInit {
       );
   }
 
-  verDetalle(evento: any) {
-    this.router.navigateByUrl(`peliculas/mejores-del-anio/${evento}`);
+  verDetalles(evento: any) {
+    this.router.navigateByUrl(`peliculas/mejores-del-anio/detalles/${evento}`);
   }
   
 }

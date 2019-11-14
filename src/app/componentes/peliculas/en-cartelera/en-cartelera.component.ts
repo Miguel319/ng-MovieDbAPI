@@ -31,6 +31,6 @@ export class EnCarteleraComponent implements OnInit {
   }
 
   verDetalles(evento: any) {
-    this.router.navigateByUrl(`peliculas/en-cartelera/${evento}`);
+    this.router.navigateByUrl(`peliculas/en-cartelera/detalles/${evento}`);
   }
 }

@@ -26,7 +26,7 @@ export class ComediasMasTaquillerasComponent implements OnInit {
       .subscribe(res => (this.peliculas = res), err => console.log(err));
   }
 
-  verDetalle(evento: any) {
-    this.router.navigateByUrl(`peliculas/comedias-mas-taquilleras/${evento}`);
+  verDetalles(evento: any) {
+    this.router.navigateByUrl(`peliculas/comedias-mas-taquilleras/detalles/${evento}`);
   }
 }

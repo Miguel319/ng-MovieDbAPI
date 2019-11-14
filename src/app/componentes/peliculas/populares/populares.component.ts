@@ -32,6 +32,6 @@ export class PopularesComponent implements OnInit {
   }
 
   verDetalles(evento: any) {
-    this.router.navigateByUrl(`peliculas/populares/${evento}`);
+    this.router.navigateByUrl(`peliculas/populares/detalles/${evento}`);
   }
 }

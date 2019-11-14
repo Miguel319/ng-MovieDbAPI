@@ -30,7 +30,7 @@ export class MejoresTomCruiseComponent implements OnInit {
       );
   }
 
-  verDetalle(evento: any) {
-    this.router.navigateByUrl(`peliculas/mejores-de-tom-cruise/${evento}`);
+  verDetalles(evento: any) {
+    this.router.navigateByUrl(`peliculas/mejores-de-tom-cruise/detalles/${evento}`);
   }
 }

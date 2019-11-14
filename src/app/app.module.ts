@@ -1,12 +1,11 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule } from "@angular/forms";
 
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./componentes/navbar/navbar.component";
-import { BusquedaComponent } from "./componentes/busqueda/busqueda.component";
+import { BusquedaComponent } from "./componentes/peliculas/busqueda/busqueda.component";
 import { HomeComponent } from "./componentes/home/home.component";
 import { PopularesComponent } from "./componentes/peliculas/populares/populares.component";
 import { AppRoutingModule } from "./routes";
@@ -19,7 +18,7 @@ import { ComediasMasTaquillerasComponent } from "./componentes/peliculas/comedia
 import { MejoresConRatingRComponent } from "./componentes/peliculas/mejores-con-rating-r/mejores-con-rating-r.component";
 import { DetallesComponent } from "./componentes/peliculas/detalles/detalles.component";
 import { PeliculaTarjetaComponent } from "./componentes/peliculas/pelicula-tarjeta/pelicula-tarjeta.component";
-import { DuracionPipe } from './pipes/duracion.pipe';
+import { DuracionPipe } from "./pipes/duracion.pipe";
 
 @NgModule({
   declarations: [

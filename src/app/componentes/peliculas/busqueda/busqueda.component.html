@@ -1,3 +1,11 @@
-<p>
-  busqueda works!
-</p>
+<h3 class="titulo">Películas con el nombre de "{{ peliculaNombre }}"</h3>
+
+<div *ngIf="peliculas" class="card-columns">
+  <app-pelicula-tarjeta
+    *ngFor="let pelicula of peliculas"
+    [id]="pelicula.id"
+    (cambioPelicula)="verDetalles($event)"
+    [pelicula]="pelicula"
+  >
+  </app-pelicula-tarjeta>
+</div>

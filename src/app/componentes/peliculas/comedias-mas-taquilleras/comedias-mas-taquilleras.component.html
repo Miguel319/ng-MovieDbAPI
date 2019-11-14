@@ -2,7 +2,7 @@
 
 <div class="card-columns">
   <app-pelicula-tarjeta
-    (cambioPelicula)="verDetalle($event)"
+    (cambioPelicula)="verDetalles($event)"
     *ngFor="let pelicula of peliculas"
     [id]="pelicula.id"
     [pelicula]="pelicula"
