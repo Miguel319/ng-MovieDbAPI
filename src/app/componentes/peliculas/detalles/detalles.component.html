@@ -32,7 +32,7 @@
     </ng-template>
 
     <div *ngIf="pelicula.production_companies.length > 1; else productora">
-      <h5 class="titulo">Productoras</h5>
+      <h5 class="titulo">Productoras:</h5>
       <ul *ngFor="let productora of pelicula.production_companies">
         <li>{{ productora["name"] }}</li>
       </ul>

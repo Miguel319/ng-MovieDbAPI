@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { PeliculasService } from "../../servicios/peliculas.service";
+import { Router } from "@angular/router";
+import { NgForm } from "@angular/forms";
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  selector: "app-navbar",
+  templateUrl: "./navbar.component.html",
+  styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent implements OnInit {
+  busqueda: string;
 
-  constructor() { }
+  constructor(private router: Router) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  buscar(peliculaNombre: string) {
+    this.router.navigateByUrl(`/peliculas/busqueda/${peliculaNombre}`);
   }
-
 }

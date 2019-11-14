@@ -18,6 +18,7 @@ export class PeliculasService {
 
   constructor(private http: HttpClient) {}
 
+  // Mapeo del resultado que retorna la petición al modelo Película
   private mapearPeliculas(objPelicula: Object): Pelicula[] {
     const peliculas: Pelicula[] = [];
 
@@ -33,6 +34,7 @@ export class PeliculasService {
     return peliculas;
   }
 
+  // Mapeo detalles de película dada en base al objeto que retorna la petición
   private mapearPelicula(objPelicula: PeliculaDetalle) {
     let peliculaDetalles: PeliculaDetalle = { ...objPelicula };
 
@@ -46,7 +48,7 @@ export class PeliculasService {
       : peliculaDetalles;
   }
 
-  //En cartelera
+  // En cartelera
   obtenerEnCartelera() {
     const mesActual =
       this.fechaActual.getMonth().toString().length === 1
@@ -64,19 +66,19 @@ export class PeliculasService {
     return this.http.get(url).pipe(map(this.mapearPeliculas));
   }
 
-  //Populares
+  // Populares
   obtenerPopulares() {
     const url = `${this.urlMovieDb}/discover/movie?sort_by=popularity.desc&api_key=${this.apiKey}&language=es`;
     return this.http.get(url).pipe(map(this.mapearPeliculas));
   }
 
-  //Populares más para niños
+  // Populares más para niños
   obtenerPopularesEntreNinios() {
     const url = `${this.urlMovieDb}/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc&api_key=${this.apiKey}&language=es`;
     return this.http.get(url).pipe(map(this.mapearPeliculas));
   }
 
-  //Mejores del año actual
+  // Mejores del año actual
   obtenerMejoresDelAnio() {
     const url = `${
       this.urlMovieDb
@@ -87,13 +89,14 @@ export class PeliculasService {
     return this.http.get(url).pipe(map(this.mapearPeliculas));
   }
 
-  //Mejores películas de ciencia ficción en las que ha estado Tom Cruise
+  // Mejores películas de ciencia ficción en las que ha estado Tom Cruise
   obtenerMejoresTomCruise() {
     const url = `${this.urlMovieDb}/discover/movie?with_genres=878&with_cast=500&sort_by=vote_average.desc&api_key=${this.apiKey}&language=es`;
 
     return this.http.get(url).pipe(map(this.mapearPeliculas));
   }
 
+  // Mejores películas del año
   obtenerMejoresDramasDelAnio() {
     const url = `${
       this.urlMovieDb
@@ -104,21 +107,31 @@ export class PeliculasService {
     return this.http.get(url).pipe(map(this.mapearPeliculas));
   }
 
+  // Películas más taquilleras
   obtenerComediasMasTaquilleras() {
     const url = `${this.urlMovieDb}/discover/movie?with_genres=35&with_cast=23659&sort_by=revenue.desc&api_key=${this.apiKey}&language=es`;
 
     return this.http.get(url).pipe(map(this.mapearPeliculas));
   }
-
+  
+  // Mejores películas con rating R
   obtenerMejoresConRatingR() {
     const url = `${this.urlMovieDb}/discover/movie/?certification_country=US&certification=R&sort_by=vote_average.desc&api_key=${this.apiKey}&language=es`;
 
     return this.http.get(url).pipe(map(this.mapearPeliculas));
   }
 
+  // Detalles de películas
   obtenerDetalles(id: number | string) {
     const url = `${this.urlMovieDb}/movie/${id}?api_key=${this.apiKey}&language=es`;
 
     return this.http.get(url).pipe(map(this.mapearPelicula));
+  }
+
+  // Buscar película por nombre
+  buscar(peliculaNombre: string) {
+    const url = `${this.urlMovieDb}/search/movie?include_adult=false&page=1&query=${peliculaNombre}&language=es&api_key=${this.apiKey}`;
+
+    return this.http.get(url).pipe(map(this.mapearPeliculas));
   }
 }

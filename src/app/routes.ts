@@ -14,8 +14,8 @@ import { DetallesComponent } from "./componentes/peliculas/detalles/detalles.com
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
-  { path: "busqueda", component: BusquedaComponent },
-  { path: "busqueda/:texto", component: BusquedaComponent },
+  { path: "peliculas/busqueda", component: BusquedaComponent },
+  { path: "peliculas/busqueda/:peliculaNombre", component: BusquedaComponent },
   { path: "peliculas/populares", component: PopularesComponent },
   { path: "peliculas/populares/:id", component: DetallesComponent },
   { path: "peliculas/en-cartelera", component: EnCarteleraComponent },

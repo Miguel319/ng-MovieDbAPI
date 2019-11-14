@@ -46,10 +46,18 @@
         <input
           class="form-control mr-sm-2"
           type="search"
+          minlength="1"
+          #valorBusqueda
+          [(ngModel)]="busqueda"
+          name="busqueda"
           placeholder="Nombre de la película"
           aria-label="buscar"
         />
-        <button class="btn btn-success my-2 my-sm-0" type="submit">
+        <button
+          (click)="buscar(valorBusqueda.value)"
+          class="btn btn-success my-2 my-sm-0"
+          type="submit"
+        >
           Buscar
         </button>
       </form>
