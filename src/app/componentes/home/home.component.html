@@ -1,3 +1,18 @@
-<p>
-  home works!
-</p>
+<h3 class="titulo">Categorías de películas</h3>
+
+<div class="card-columns">
+  <div class="card" *ngFor="let categoria of categorias">
+    <img
+      [src]="categoria.imagenRuta"
+      class="card-img-top"
+      (click)="redireccionar(categoria.id)"
+      alt="{{ categoria.titulo }}"
+    />
+    <div class="card-body">
+      <h5 class="card-title">
+        <b>{{ categoria.titulo }}</b>
+      </h5>
+      <p>{{ categoria.descripcion }}</p>
+    </div>
+  </div>
+</div>

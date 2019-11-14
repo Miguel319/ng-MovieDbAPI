@@ -23,14 +23,21 @@ export class PeliculasService {
     const peliculas: Pelicula[] = [];
 
     for (let obj of objPelicula["results"]) {
-      obj[
-        "poster_path"
-      ] = `http://image.tmdb.org/t/p/w300/${obj["poster_path"]}`;
-      obj[
-        "backdrop_path"
-      ] = `http://image.tmdb.org/t/p/w300/${obj["poster_path"]}`;
+      if (obj["poster_path"] === null || obj["poster_path"] === undefined) {
+        obj["poster_path"] = "../../assets/imgs/no image.png";
+        obj["backdrop_path"] = "../../assets/imgs/no image.png";
+      } else {
+        obj[
+          "poster_path"
+        ] = `http://image.tmdb.org/t/p/w300/${obj["poster_path"]}`;
+        obj[
+          "backdrop_path"
+        ] = `http://image.tmdb.org/t/p/w300/${obj["poster_path"]}`;
+      }
+
       peliculas.push(obj);
     }
+
     return peliculas;
   }
 
@@ -41,6 +48,14 @@ export class PeliculasService {
     if (!objPelicula.backdrop_path.startsWith("h")) {
       peliculaDetalles.backdrop_path = `http://image.tmdb.org/t/p/w300/${objPelicula.backdrop_path}`;
       peliculaDetalles.poster_path = `http://image.tmdb.org/t/p/w300/${objPelicula.poster_path}`;
+    }
+
+    if (
+      objPelicula.poster_path === null ||
+      objPelicula.poster_path === undefined
+    ) {
+      peliculaDetalles.poster_path = "../../assets/imgs/no image.png";
+      peliculaDetalles.backdrop_path = "../../assets/imgs/no image.png";
     }
 
     return objPelicula === null || objPelicula === undefined
@@ -113,7 +128,7 @@ export class PeliculasService {
 
     return this.http.get(url).pipe(map(this.mapearPeliculas));
   }
-  
+
   // Mejores películas con rating R
   obtenerMejoresConRatingR() {
     const url = `${this.urlMovieDb}/discover/movie/?certification_country=US&certification=R&sort_by=vote_average.desc&api_key=${this.apiKey}&language=es`;

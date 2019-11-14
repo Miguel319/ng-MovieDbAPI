@@ -15,14 +15,6 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/peliculas/populares']"
-            >Películas <span class="sr-only">(current)</span></a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">Link</a>
-        </li>
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
@@ -32,13 +24,63 @@
             aria-haspopup="true"
             aria-expanded="false"
           >
-            Dropdown
+            Categorías
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item">Action</a>
-            <a class="dropdown-item">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item">Something else here</a>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="dropdown-item" [routerLink]="['/peliculas/populares']"
+                >Populares</a
+              >
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a
+                class="dropdown-item"
+                [routerLink]="['/peliculas/en-cartelera']"
+                >En cartelera</a
+              >
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a
+                class="dropdown-item"
+                [routerLink]="['/peliculas/mejores-de-tom-cruise']"
+                >Mejores de Tom Cruise</a
+              >
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a
+                class="dropdown-item"
+                [routerLink]="['/peliculas/comedias-mas-taquilleras']"
+                >Comedias más taquilleras</a
+              >
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a
+                class="dropdown-item"
+                [routerLink]="['/peliculas/populares-entre-ninios']"
+                >Populares entre niños</a
+              >
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a
+                class="dropdown-item"
+                [routerLink]="['/peliculas/mejores-dramas-del-anio']"
+                >Mejores dramas del año</a
+              >
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a
+                class="dropdown-item"
+                [routerLink]="['/peliculas/mejores-con-rating-r']"
+                >Mejores con rating R</a
+              >
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a
+                class="dropdown-item"
+                [routerLink]="['/peliculas/mejores-del-anio']"
+                >Películas del año</a
+              >
+            </li>
           </div>
         </li>
       </ul>

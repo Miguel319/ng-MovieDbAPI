@@ -10,3 +10,7 @@ nav {
 .navbar-brand:first-child {
   cursor: pointer;
 }
+
+li>a {
+  cursor: pointer;
+}
