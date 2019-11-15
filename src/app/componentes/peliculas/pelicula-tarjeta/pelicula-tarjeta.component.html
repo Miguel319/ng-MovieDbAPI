@@ -1,8 +1,8 @@
-<div class="card">
+<div class="card animated fadeInUp fast">
   <img
     [src]="pelicula.poster_path"
     (click)="verDetalles()"
-    class="card-img-top"
+    class="card-img-top "
     alt="{{ pelicula.title }}"
   />
   <div class="card-body">
@@ -11,4 +11,5 @@
     </h5>
     <p class="card-text">{{ pelicula.overview.match("^[^.]+(?=[.])") }}.</p>
   </div>
+  <div class="middle"></div>
 </div>

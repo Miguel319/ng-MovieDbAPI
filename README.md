@@ -1,27 +1,25 @@
 # NgMovieDbAPI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+Esta aplicación consume la API: ["The Movie Db"](https://www.themoviedb.org/documentation/api).
 
-## Development server
+URL = https://api.themoviedb.org/3
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+|  Característica/funcionalidad    |             Endpoint
+|----------------------------------| ----------------------------------------------------------------------------------------- |
+| Películas populares              | URL+/discover/movie?sort_by=popularity.desc                                               |
+| Películas en cartelera           | URL+discover/movie?primary_release_date.gte=mesPasado&primary_release_date.lte=hoy        |
+| Películas populares entre niños  | URL+/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc  |
+| Películas del año                | URL+/discover/movie?primary_release_year=2019                                             |
+| Mejores películas de Tom Cruise  | URL+/discover/movie?with_genres=878&with_cast=500&sort_by=vote_average.desc               |
+| Mejores dramas del año           | URL+/discover/movie?with_genres=18&primary_release_year=2019                              |
+| Comedias más taquilleras         | URL+/discover/movie?with_genres=35&with_cast=23659&sort_by=revenue.desc                   |
+| Mejores películas con rating R   | URL+/discover/movie/?certification_country=US&certification=R&sort_by=vote_average.desc   |
+| Búsqueda de películas            | URL+/search/movie?include_adult=false&page=1&query=peliculaNombre                         |
+| Detalles de películas            | URL/movie/id                                                                              |
 
-## Code scaffolding
+### NgMovieDbAPI consta de:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* Múltiples componentes
+* Servicios
+* Pipes personalizados
+* Enrutamiento
