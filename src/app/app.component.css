@@ -1,0 +1,13 @@
+#ft {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+ 
+}
+
+
+.wrap {
+  margin: 0 auto;
+  display: block;
+  height: 100%;
+}

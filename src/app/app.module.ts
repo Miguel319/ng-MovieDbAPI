@@ -19,6 +19,8 @@ import { MejoresConRatingRComponent } from "./componentes/peliculas/mejores-con-
 import { DetallesComponent } from "./componentes/peliculas/detalles/detalles.component";
 import { PeliculaTarjetaComponent } from "./componentes/peliculas/pelicula-tarjeta/pelicula-tarjeta.component";
 import { DuracionPipe } from "./pipes/duracion.pipe";
+import { FooterComponent } from './componentes/footer/footer.component';
+import { AcercaDeComponent } from './componentes/acerca-de/acerca-de.component';
 
 @NgModule({
   declarations: [
@@ -36,8 +38,11 @@ import { DuracionPipe } from "./pipes/duracion.pipe";
     MejoresConRatingRComponent,
     DetallesComponent,
     PeliculaTarjetaComponent,
-    DuracionPipe
+    DuracionPipe,
+    FooterComponent,
+    AcercaDeComponent
   ],
+  exports: [FooterComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent]

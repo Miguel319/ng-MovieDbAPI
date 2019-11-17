@@ -11,6 +11,7 @@ import { MejoresDramasDelAnioComponent } from "./componentes/peliculas/mejores-d
 import { ComediasMasTaquillerasComponent } from "./componentes/peliculas/comedias-mas-taquilleras/comedias-mas-taquilleras.component";
 import { MejoresConRatingRComponent } from "./componentes/peliculas/mejores-con-rating-r/mejores-con-rating-r.component";
 import { DetallesComponent } from './componentes/peliculas/detalles/detalles.component';
+import { AcercaDeComponent } from './componentes/acerca-de/acerca-de.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -63,6 +64,7 @@ const routes: Routes = [
     path: "peliculas/mejores-con-rating-r/detalles/:id",
     component: DetallesComponent
   },
+  { path: 'acerca-de', component: AcercaDeComponent },
   { path: "**", pathMatch: "full", redirectTo: "" }
 ];
 
